@@ -1,12 +1,12 @@
 '''
 Tiling script for CellenONE FL images to an custom grid format
-@Ikuo Obataya (obataya@qd-japan.com)
+@Ikuo Obataya (obataya[at]qd-japan.com)
 
 Requirements
 Python 3.x, pillow
 
 Usage
-Specify folder contains image files. The folder name should end widh .RUN
+Specify folder contains image files. The image names should end with RUN.png
 You can specify parameters of format, target index by options. Check by -h or --help
 '''
 import os
@@ -43,12 +43,10 @@ if args.debug:
 # Set format
 wellNameFormat = "%s%02d"
 if args.format == '384':
-    targetCols = 24
-    targetRows = 16
+    (targetCols,targetRows) = (24,16)
     wRowName = [s for s in "ABCDEFGHIJKLMNOP"]
 elif args.format == '96':
-    targetCols = 12
-    targetRows = 8
+    (targetCols,targetRows) = (12,8)
     wRowName = [s for s in "ABCDEFGH"]
 else:
     print("Invalid format definition. use 96 or 384")
