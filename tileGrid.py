@@ -90,6 +90,7 @@ if not args.background == None and os.path.exists(args.background):
     tilesCanvas.paste(Image.open(args.background,'r'),(0,0))
 
 print("Format %s, (cols,rows)=(%d,%d), channels:%d" % (args.format,targetCols,targetRows,channels))
+textColor = (args.text_color,args.text_color,args.text_color)
 
 fileIdx = 0
 targetIdx = 1
@@ -119,7 +120,7 @@ for row in range(0,targetRows):
             else:
                 tilesCanvas.paste(tile,(tileX,tileY))
         # write well name after pasted
-        tilesDraw.text((tileX+10,tileY+10),wellNameLabel % (wellName,targetIdx),fill=(255,255,255),font=font)
+        tilesDraw.text((tileX+10,tileY+10),wellNameLabel % (wellName,targetIdx),fill=textColor,font=font)
         targetIdx += 1
         if targetIdx > targetEnd:
             break

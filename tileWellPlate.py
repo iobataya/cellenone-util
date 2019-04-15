@@ -27,6 +27,7 @@ parser.add_argument('-a', '--export_all',action='store_true',help="Export all im
 parser.add_argument('-d','--debug',action='store_true',help="Flag for debug-mode running without saving")
 parser.add_argument('-b','--background',type=str,help='File path of background image to overlay')
 parser.add_argument('-w','--width_to',type=int,default=400,help='Resize width of each images')
+parser.add_argument('-t','--text_color',type=int,default=255,help='Text color by grey scale')
 args = parser.parse_args()
 
 # Check directory
@@ -93,6 +94,7 @@ if not args.background == None and os.path.exists(args.background):
     tilesCanvas.paste(Image.open(args.background,'r'),(0,0))
 
 print("Format %s, (cols,rows)=(%d,%d), channels:%d" % (args.format,targetCols,targetRows,channels))
+textColor = (args.text_color,args.text_color,args.text_color)
 
 fileIdx = 0
 targetIdx = 1
@@ -122,7 +124,7 @@ for col in range(0,targetCols):
             else:
                 tilesCanvas.paste(tile,(tileX,tileY))
         # write well name after pasted
-        tilesDraw.text((tileX,tileY),wellNameLabel % (wellName,targetIdx),fill=(255,255,255),font=font)
+        tilesDraw.text((tileX,tileY),wellNameLabel % (wellName,targetIdx),fill=textColor,font=font)
         targetIdx += 1
         if targetIdx>targetEnd:
             break
