@@ -1,2 +1,2 @@
 # cellenone-util
-Utility scripts for a single cell dispenser, CellenONE
+Unofficial utility scripts for a single cell dispenser, CellenONE from Cellenion
